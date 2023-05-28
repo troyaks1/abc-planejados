@@ -41,8 +41,14 @@
 
 .title {
   margin: 0;
-  line-height: 1.15;
+  line-height: 1.50;
   font-size: 4rem;
+  font-family:'Trebuchet MS', Arial, sans-serif;
+
+}
+
+.title abc {
+  color: #c01f34
 }
 
 .title,
