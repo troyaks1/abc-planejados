@@ -2,13 +2,13 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsPersonCircle } from "react-icons/bs";
 
 const Home: NextPage = () => {
   return (
     <div className='flex flex-col min-h-screen w-full'>
       {/* Header */}
-      <div className='bg-blue-600 top-0 z-50 px-4 py-0.5 sticky box-border w-full flex justify-between items-center'>
+      <div className='bg-blue-600 top-0 z-50 px-4 sticky box-border w-full flex justify-between items-center'>
         {/* logo */}
         <div className='absolute mr-auto'>
           LOGO
@@ -24,11 +24,21 @@ const Home: NextPage = () => {
         <div className='flex items-center'>
           {/* Name */}
           <div className='p-4'>
-            NAME
+            Olá, cliente!
           </div>
           {/* login */}
-          <div className='ml-auto'>
-            LOGIN
+          <div className='ml-auto flex flex-row cursor-pointer items-center'>
+            <div className='p-2'>
+              <BsPersonCircle size={30}/>
+            </div>
+            <div className='flex flex-col text-xs'>
+              <div>
+              Faça login
+              </div>
+              <div className='font-bold'>
+              ou cadastre-se
+              </div>
+            </div>
           </div>
         </div>
       </div>
