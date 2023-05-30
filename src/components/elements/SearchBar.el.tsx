@@ -25,7 +25,7 @@ export default function SearchBar({ ...props }: SearchBarStyle) {
   const searchOnDB = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      // Need to implement search on database script.
+      // TODO: Need to implement search on database script.
       console.log(input);
     }
   }
