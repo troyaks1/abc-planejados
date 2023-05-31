@@ -6,6 +6,6 @@ export interface Props {
   }
 }
 
-export default function SideModal ({...props}: Props) {
+export default function MidModal ({...props}: Props) {
 
 }

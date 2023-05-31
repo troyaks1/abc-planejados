@@ -20,8 +20,7 @@ export default function Footer({ ...props }: Props): JSX.Element {
 
 function FooterForMobile({ ...props }: Props): JSX.Element {
   return (
-    <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-50 px-6 absolute flex flex-row justify-between items-center rounded-t-xl shadow-inner lg:hidden`}>
-
+    <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-50 px-8 absolute flex flex-row justify-between items-center rounded-t-xl shadow-inner lg:hidden`}>
       <div className='flex flex-col items-center cursor-pointer'>
         <div>
           <BsWhatsapp size={26} />
