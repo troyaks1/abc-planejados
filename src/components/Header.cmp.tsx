@@ -3,12 +3,12 @@ import SearchBar from "./elements/SearchBar.el";
 import { useState } from "react";
 import Color from "@/interfaces/frontend/Color";
 
-export interface HeaderStyle {
+interface Props {
   color: Color
 }
 
 
-export default function Header({ ...props }: HeaderStyle): JSX.Element {
+export default function Header({ ...props }: Props): JSX.Element {
   return (
     <>
       <HeaderForComputer color={props.color} />
@@ -17,7 +17,7 @@ export default function Header({ ...props }: HeaderStyle): JSX.Element {
   )
 }
 
-function HeaderForComputer({ ...props }: HeaderStyle): JSX.Element {
+function HeaderForComputer({ ...props }: Props): JSX.Element {
   return (
     <div className={`lg:flex ${props.color.secundary.bg} ${props.color.secundary.shadow} top-0 z-50 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md hidden`}>
       {/* logo */}
@@ -28,10 +28,7 @@ function HeaderForComputer({ ...props }: HeaderStyle): JSX.Element {
       <SearchBar color={props.color} />
       {/* Name and Login */}
       <div className='flex items-center space-x-4'>
-        {/* Name */}
-        <div className={`${props.color.secundary.text}`}>
-          Olá, cliente!
-        </div>
+        {/* Name */ /* <div className={`${props.color.secundary.text}`}> Olá cliente! </div> */}
         {/* login */}
         <div className='ml-auto flex flex-row cursor-pointer items-center space-x-2'>
           <BsPersonCircle size={30} className={`${props.color.secundary.text}`} />
@@ -49,7 +46,7 @@ function HeaderForComputer({ ...props }: HeaderStyle): JSX.Element {
   )
 }
 
-function HeaderForMobile({ ...props }: HeaderStyle): JSX.Element {
+function HeaderForMobile({ ...props }: Props): JSX.Element {
 
   const [search, setSearch] = useState(false);
 
@@ -61,17 +58,17 @@ function HeaderForMobile({ ...props }: HeaderStyle): JSX.Element {
   const LogoForMobile = () => {
     return (
       <div className={`flex relative left-1/2 transform -translate-x-1/2 text-md ${props.color.secundary.text} font-bold`}>
-        planejados.abc.br
+        www.planejados.abc.br
       </div>)
   }
 
   return (
     <div className={`lg:hidden ${props.color.secundary.bg} ${props.color.secundary.shadow} flex top-0 z-50 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-xl shadow-md`}>
       {/* logo or search bar */}
-      { !search && ( <LogoForMobile/> ) }
-      { search && ( <SearchBar color={props.color} /> ) }
+      {!search && (<LogoForMobile />)}
+      {search && (<SearchBar color={props.color} />)}
       <BsSearch className={`${props.color.secundary.text} absolute left-8`} size={20} onClick={(e) => openSearchBar()} />
-      <BsList className={`${props.color.secundary.text} absolute right-8`} size={25} />
+      { /* <BsList className={`${props.color.secundary.text} absolute right-8 cursor-pointer`} size={25} /> */ }
     </div>
   )
 }

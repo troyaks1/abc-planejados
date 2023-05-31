@@ -1,13 +1,14 @@
-import { BsCart, BsWhatsapp, BsPersonCircle } from 'react-icons/bs';
+import { BsCart, BsWhatsapp, BsPersonCircle, BsList, BsListNested, BsListUl, BsReverseListColumnsReverse } from 'react-icons/bs';
 import { BiStoreAlt } from 'react-icons/bi';
+import { GiHamburgerMenu } from 'react-icons/gi'
 import Color from '@/interfaces/frontend/Color';
 
-export interface FooterStyle {
+interface Props {
   color: Color
 }
 
 
-export default function Footer({ ...props }: FooterStyle): JSX.Element {
+export default function Footer({ ...props }: Props): JSX.Element {
 
   return (
     <>
@@ -17,39 +18,40 @@ export default function Footer({ ...props }: FooterStyle): JSX.Element {
 
 }
 
-function FooterForMobile({ ...props }: FooterStyle): JSX.Element {
+function FooterForMobile({ ...props }: Props): JSX.Element {
   return (
-    <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-50 absolute flex flex-row justify-around items-center rounded-t-xl shadow-inner lg:hidden`}>
-      <div className='flex flex-col items-center'>
+    <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-50 px-6 absolute flex flex-row justify-between items-center rounded-t-xl shadow-inner lg:hidden`}>
+
+      <div className='flex flex-col items-center cursor-pointer'>
         <div>
-          <BiStoreAlt size={20} />
+          <BsWhatsapp size={26} />
         </div>
-        <div className='text-sm'>
-          Início
-        </div>
-      </div>
-      <div className='flex flex-col items-center'>
-        <div>
-          <BsWhatsapp size={20} />
-        </div>
-        <div className='text-sm'>
+        <div className='text-xs'>
           WhatsApp
         </div>
       </div>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center cursor-pointer'>
         <div>
-          <BsCart size={20} />
+          <BsCart size={26} />
         </div>
-        <div className='text-sm'>
+        <div className='text-xs'>
           Carrinho
         </div>
       </div>
-      <div className='flex flex-col items-center'>
+      <div className='flex flex-col items-center cursor-pointer'>
         <div>
-          <BsPersonCircle size={20} />
+          <BsPersonCircle size={26} />
         </div>
-        <div className='text-sm'>
+        <div className='text-xs'>
           Perfil
+        </div>
+      </div>
+      <div className='flex flex-col items-center cursor-pointer'>
+        <div>
+          <GiHamburgerMenu size={26} />
+        </div>
+        <div className='text-xs'>
+          Listas
         </div>
       </div>
     </div>

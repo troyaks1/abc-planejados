@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
-import Header, { HeaderStyle } from '../components/Header.cmp';
-import Footer from '../components/Footer.cmp';
+import Header from '@/components/Header.cmp';
+import Footer from '@/components/Footer.cmp';
 import Color from '@/interfaces/frontend/Color';
 
 const Home: NextPage = () => {
@@ -24,7 +24,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className={`${color.primary.bg} flex flex-col min-h-screen w-full bg-`}>
+    <div className={`${color.primary.bg} flex flex-col min-h-screen w-full`}>
       <Header color={color} />
       <Footer color={color} />
     </div>
