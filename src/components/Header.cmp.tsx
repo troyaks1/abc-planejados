@@ -1,22 +1,10 @@
 import { BsSearch, BsPersonCircle, BsList } from "react-icons/bs";
 import SearchBar from "./elements/SearchBar.el";
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
+import Color from "@/interfaces/frontend/Color";
 
 export interface HeaderStyle {
-  color: {
-    primary: {
-      bg: string
-      text: string
-    },
-    secundary: {
-      bg: string
-      text: string
-    },
-    terceary: {
-      bg: string
-      text: string
-    }
-  }
+  color: Color
 }
 
 
@@ -29,11 +17,11 @@ export default function Header({ ...props }: HeaderStyle): JSX.Element {
   )
 }
 
-function HeaderForComputer({ ...props }: HeaderStyle) {
+function HeaderForComputer({ ...props }: HeaderStyle): JSX.Element {
   return (
-    <div className={`lg:flex ${props.color.primary.bg} top-0 z-50 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-xl hidden`}>
+    <div className={`lg:flex ${props.color.secundary.bg} ${props.color.secundary.shadow} top-0 z-50 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md hidden`}>
       {/* logo */}
-      <div className={`absolute mr-auto text-lg ${props.color.primary.text} font-bold`}>
+      <div className={`absolute mr-auto text-lg ${props.color.secundary.text} font-bold`}>
         www.planejados.abc.br
       </div>
       {/* Search bar */}
@@ -41,17 +29,17 @@ function HeaderForComputer({ ...props }: HeaderStyle) {
       {/* Name and Login */}
       <div className='flex items-center space-x-4'>
         {/* Name */}
-        <div className={`${props.color.primary.text}`}>
+        <div className={`${props.color.secundary.text}`}>
           Olá, cliente!
         </div>
         {/* login */}
         <div className='ml-auto flex flex-row cursor-pointer items-center space-x-2'>
-          <BsPersonCircle size={30} className={`${props.color.primary.text}`} />
+          <BsPersonCircle size={30} className={`${props.color.secundary.text}`} />
           <div className='flex flex-col text-xs text-white'>
-            <div className={`${props.color.primary.text}`}>
+            <div className={`${props.color.secundary.text}`}>
               Faça login
             </div>
-            <div className={`${props.color.primary.text} font-bold`}>
+            <div className={`${props.color.secundary.text} font-bold`}>
               ou cadastre-se
             </div>
           </div>
@@ -61,7 +49,7 @@ function HeaderForComputer({ ...props }: HeaderStyle) {
   )
 }
 
-function HeaderForMobile({ ...props }: HeaderStyle) {
+function HeaderForMobile({ ...props }: HeaderStyle): JSX.Element {
 
   const [search, setSearch] = useState(false);
 
@@ -71,20 +59,19 @@ function HeaderForMobile({ ...props }: HeaderStyle) {
   }
 
   const LogoForMobile = () => {
-
     return (
-      <div className={`flex relative left-1/2 transform -translate-x-1/2 text-md ${props.color.primary.text} font-bold`}>
+      <div className={`flex relative left-1/2 transform -translate-x-1/2 text-md ${props.color.secundary.text} font-bold`}>
         planejados.abc.br
       </div>)
   }
 
   return (
-    <div className="lg:hidden flex top-0 z-50 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-xl">
+    <div className={`lg:hidden ${props.color.secundary.bg} ${props.color.secundary.shadow} flex top-0 z-50 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-xl shadow-md`}>
       {/* logo or search bar */}
       { !search && ( <LogoForMobile/> ) }
       { search && ( <SearchBar color={props.color} /> ) }
-      <BsSearch className={`${props.color.primary.text} absolute right-8`} size={20} onClick={(e) => openSearchBar()} />
-      <BsList className={`${props.color.primary.text} absolute left-8`} size={25} />
+      <BsSearch className={`${props.color.secundary.text} absolute left-8`} size={20} onClick={(e) => openSearchBar()} />
+      <BsList className={`${props.color.secundary.text} absolute right-8`} size={25} />
     </div>
   )
 }

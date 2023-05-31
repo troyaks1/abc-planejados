@@ -1,51 +1,35 @@
 import type { NextPage } from 'next';
 import Header, { HeaderStyle } from '../components/Header.cmp';
-import { BsCart, BsWhatsapp, BsPersonCircle } from 'react-icons/bs';
-import { BiStoreAlt } from 'react-icons/bi';
-
+import Footer from '../components/Footer.cmp';
+import Color from '@/interfaces/frontend/Color';
 
 const Home: NextPage = () => {
 
-  const headerStyle: HeaderStyle = {
-    color: {
-      primary: {
-        bg: 'bg-slate-200',
-        text: 'text-zinc-800',
-      },
-      secundary: {
-        bg: 'bg-slate-500',
-        text: 'text-zinc-800',
-      },
-      terceary: {
-        bg: 'bg-red-300',
-        text: 'text-zinc-800'
-      }
+  const color: Color = {
+    primary: {
+      bg: 'bg-slate-400',
+      text: 'text-zinc-400',
+      shadow: ''
+    },
+    secundary: {
+      bg: 'bg-slate-600',
+      text: 'text-zinc-300',
+      shadow: 'shadow-cyan-900'
+    },
+    terceary: {
+      bg: 'bg-slate-500',
+      text: 'text-zinc-300',
+      shadow: ''
     }
   }
 
   return (
-    <div className={`${headerStyle.color.primary.bg} flex flex-col min-h-screen w-full`}>
-      <Header color={headerStyle.color} />
-      <div className={`${headerStyle.color.terceary.bg} ${headerStyle.color.terceary.text} w-full p-2 bottom-0 absolute flex flex-row justify-around items-center lg:hidden`}>
-        <div>
-          <BiStoreAlt size={24}/>
-        </div>
-        <div>
-          <BsWhatsapp size={24}/>
-        </div>
-        <div>
-          <BsCart size={24}/>
-        </div>
-        <div>
-          <BsPersonCircle size={24}/>
-        </div>
-      </div>
+    <div className={`${color.primary.bg} flex flex-col min-h-screen w-full bg-`}>
+      <Header color={color} />
+      <Footer color={color} />
     </div>
   )
 
 }
-
-
-
 
 export default Home
