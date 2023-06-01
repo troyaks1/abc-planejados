@@ -1,15 +1,7 @@
 import { BsCart, BsPersonCircle, BsWhatsapp } from "react-icons/bs"
 import { GiHamburgerMenu } from "react-icons/gi"
-import { IconType } from "react-icons/lib"
 
-interface Icon {
-  name_en: string
-  name_pt: string
-  image: IconType
-  size: number
-  cursor: string
-}
-
+import Icon from "@/interfaces/frontend/Icon"
 
 export default function getFooterIcons (): Icon[] {
   return [

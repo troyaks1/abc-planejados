@@ -23,7 +23,7 @@ export default function SearchBar({ ...props }: SearchBarStyle) {
     <div className='flex relative left-1/2 transform -translate-x-1/2'>
       <div className={`flex max-w-xs h-8 items-stretch rounded-full overflow-hidden shadow-xl`}>
         <input
-          className={`w-full ${props.color.terceary.bg} ${props.color.terceary.text} font-bold pl-4 pr-10 text-sm rounded-l-full outline-none`}
+          className={`w-full ${props.color.terceary.bg} ${props.color.terceary.text} font-bold pl-4 pr-10 text-sm rounded-l-full outline-none bg-opacity-50`}
           onKeyDown={(e) => searchOnDB(e)} onChange={(e) => setInput(e.target.value)} value={input}
         />
         <div className='lg:flex hidden' onClick={() => searchOnDB(null)}>

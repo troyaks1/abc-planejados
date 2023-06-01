@@ -40,7 +40,7 @@ function FooterForMobile({ ...props }: Props): JSX.Element {
         />
       )}
       {/* Actual Footer being loaded cursively from @/utils/getFotterIcons.ts */}
-      <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-10 px-8 absolute flex flex-row justify-between items-center rounded-t-xl shadow-inner lg:hidden`}>
+      <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-20 px-8 absolute flex flex-row justify-between items-center rounded-t-xl shadow-upward lg:hidden`}>
         {getFooterIcons().map((icon, index) => {
           return (
             <div key={index} className={`flex flex-col items-center ${icon.cursor}`}>

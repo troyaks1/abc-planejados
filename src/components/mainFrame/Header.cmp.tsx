@@ -19,7 +19,7 @@ export default function Header({ ...props }: Props): JSX.Element {
 
 function HeaderForComputer({ ...props }: Props): JSX.Element {
   return (
-    <div className={`lg:flex ${props.color.secundary.bg} ${props.color.secundary.shadow} top-0 z-5 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md hidden`}>
+    <div className={`lg:flex ${props.color.secundary.bg} ${props.color.secundary.shadow} top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md bg-opacity-90 hidden`}>
       {/* logo */}
       <div className={`absolute mr-auto text-lg ${props.color.secundary.text} font-bold`}>
         www.planejados.abc.br
@@ -63,7 +63,7 @@ function HeaderForMobile({ ...props }: Props): JSX.Element {
   }
 
   return (
-    <div className={`lg:hidden ${props.color.secundary.bg} ${props.color.secundary.shadow} flex top-0 z-5 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-xl shadow-md`}>
+    <div className={`lg:hidden ${props.color.secundary.bg} ${props.color.secundary.shadow} flex top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-xl bg-opacity-90 shadow-md`}>
       {/* logo or search bar */}
       {!search && (<LogoForMobile />)}
       {search && (<SearchBar color={props.color} />)}
