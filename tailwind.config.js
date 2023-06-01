@@ -8,10 +8,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  purge: {
-    content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-    options: {
-      safelist: [/^bg-/, /^text-/, /^shadow/] // regex to safelist dynamic colors from @/utils/colors
-    }
-  },
+  safelist: [
+    { pattern: /^bg-/, layers: ['utilities'] },
+    { pattern: /^text-/, layers: ['utilities'] },
+    { pattern: /^shadow/, layers: ['utilities'] },
+  ],
 }

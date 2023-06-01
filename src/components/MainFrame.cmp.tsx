@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Header from '@/components/mainFrame/Header.cmp';
 import Footer from '@/components/mainFrame/Footer.cmp';
 import Color from '@/interfaces/frontend/Color';
-import colors from "@/utils/colors";
+import getColors from "@/utils/getColors";
 
 interface Props {
   children: ReactNode
@@ -10,7 +10,7 @@ interface Props {
 
 export default function MainFrame(props: Props): JSX.Element {
 
-  const color = colors('Day'); // TODO: Add day/nigh theme and create button to handle it changing.
+  const color = getColors('Day'); // TODO: Add day/nigh theme and create button to handle it changing.
 
   return (
     <BackGround color={color}>
