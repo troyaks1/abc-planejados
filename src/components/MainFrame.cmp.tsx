@@ -28,7 +28,7 @@ interface BackGroundProps {
 
 function BackGround(props: BackGroundProps) {
   return (
-    <div className={`${props.color.primary.bg} flex flex-col min-h-screen w-full`}>
+    <div className={`bg-slate-400 flex flex-col min-h-screen w-full`}>
       {props.children}
     </div>
   )

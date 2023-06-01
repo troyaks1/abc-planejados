@@ -1,7 +1,7 @@
 import Color from "@/interfaces/frontend/Color";
 type Theme = 'Day' | 'Night';
 
-export default function (theme: Theme) {
+export default function colors (theme: Theme) {
   if (theme === 'Day') {
     return colorDay
   } else if (theme === 'Night') {
