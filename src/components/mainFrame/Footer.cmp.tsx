@@ -2,7 +2,7 @@ import { BsCart, BsWhatsapp, BsPersonCircle } from 'react-icons/bs';
 import { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import Color from '@/interfaces/frontend/Color';
-import MidModal from './MidModal.cmp';
+import MidModal from '@/components/mainFrame/MidModal.cmp';
 
 interface Props {
   color: Color
@@ -39,7 +39,7 @@ function FooterForMobile({ ...props }: Props): JSX.Element {
         />
       )}
       {/* Actual Footer */}
-      <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-50 px-8 absolute flex flex-row justify-between items-center rounded-t-xl shadow-inner lg:hidden`}>
+      <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-10 px-8 absolute flex flex-row justify-between items-center rounded-t-xl shadow-inner lg:hidden`}>
         <div className='flex flex-col items-center cursor-pointer'>
           <div>
             <BsWhatsapp size={26} onClick={() => handleClick('WhatsApp')}/>
