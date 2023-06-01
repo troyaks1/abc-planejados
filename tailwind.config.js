@@ -12,5 +12,6 @@ module.exports = {
     { pattern: /^bg-/, layers: ['utilities'] },
     { pattern: /^text-/, layers: ['utilities'] },
     { pattern: /^shadow-/, layers: ['utilities'] },
+    { pattern: /^cursor-/, layers: ['utilities'] },
   ],
 }
