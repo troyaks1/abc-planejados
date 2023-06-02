@@ -1,7 +1,7 @@
 import { IconType } from "react-icons/lib"
 
 export default interface Icon {
-  type: string
+  type: Modal.Content['type']
   name_pt: string
   image: IconType
   size: number
