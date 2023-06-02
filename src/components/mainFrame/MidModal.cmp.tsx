@@ -32,3 +32,31 @@ export default function MidModal({ ...props }: Props): JSX.Element {
     </div>
   )
 }
+
+function ModalContent ({...props}: Props) {
+  if (props.style.type === 'WhatsApp') {
+    return (
+      <div>
+
+      </div>
+    )
+  } else if (props.style.type === 'Cart') {
+    return (
+      <div>
+
+      </div>
+    )
+  } else if (props.style.type === 'Profile') {
+    return (
+      <div>
+
+      </div>
+    )
+  } else if (props.style.type === 'Menu') {
+    return (
+      <div>
+        
+      </div>
+    )
+  }
+}

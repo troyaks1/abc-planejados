@@ -45,7 +45,7 @@ function FooterForMobile({ ...props }: Props): JSX.Element {
           return (
             <div key={index} className={`flex flex-col items-center ${icon.cursor}`}>
               <div>
-                <icon.image size={icon.size} onClick={() => handleClick(icon.name_en)} />
+                <icon.image size={icon.size} onClick={() => handleClick(icon.type)} />
               </div>
               <div className='text-xs'>
                 {icon.name_pt}

@@ -1,7 +1,7 @@
 import { IconType } from "react-icons/lib"
 
 export default interface Icon {
-  name_en: string
+  type: string
   name_pt: string
   image: IconType
   size: number

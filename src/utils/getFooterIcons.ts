@@ -6,28 +6,28 @@ import Icon from "@/interfaces/frontend/Icon"
 export default function getFooterIcons (): Icon[] {
   return [
     {
-      name_en: 'WhatsApp',
+      type: 'WhatsApp',
       name_pt: 'WhatsApp',
       image: BsWhatsapp,
       size: 26,
       cursor: 'cursor-pointer'
     },
     {
-      name_en: 'Cart',
+      type: 'Cart',
       name_pt: 'Carrinho',
       image: BsCart,
       size: 26,
       cursor: 'cursor-pointer'
     },
     {
-      name_en: 'Profile',
+      type: 'Profile',
       name_pt: 'Perfil',
       image: BsPersonCircle,
       size: 26,
       cursor: 'cursor-pointer'
     },
     {
-      name_en: 'Menu',
+      type: 'Menu',
       name_pt: 'Menu',
       image: GiHamburgerMenu,
       size: 26,
