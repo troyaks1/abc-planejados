@@ -22,23 +22,17 @@ export default function Footer({ ...props }: Props): JSX.Element {
 
 function FooterForMobile({ ...props }: Props): JSX.Element {
 
-  const [isModalClosed, setModalClosed] = useState<boolean>(true);
+  const [isModalOpen, setModalOpen] = useState<boolean>(true);
   const [lastOptionChosen, setOptionChosen] = useState<string>('');
 
   const handleClick = (optChosen: string) => {
+    if (lastOptionChosen === optChosen || isModalOpen) { setModalOpen(!isModalOpen) }
     setOptionChosen(optChosen);
-    if (lastOptionChosen === optChosen || isModalClosed) { setModalClosed(!isModalClosed) }
   }
 
   return (
     <div className='flex flex-col'>
-      {/* Mid modal */}
-      {!isModalClosed && (
-        <MidModal
-          style={{ color: props.color, type: lastOptionChosen }}
-          action={{ closeItself: setModalClosed }}
-        />
-      )}
+      <MidModal style={{ color: props.color, type: lastOptionChosen }} action={{ openItself: isModalOpen }} />
       {/* Actual Footer being loaded cursively from @/utils/getFotterIcons.ts */}
       <div className={`flex ${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-20 px-8 absolute flex flex-row justify-between items-center rounded-t-xl shadow-upward lg:hidden`}>
         {getFooterIcons().map((icon, index) => {
