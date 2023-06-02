@@ -1,6 +1,7 @@
 import Color from "@/interfaces/frontend/Color"
 import { Dispatch, SetStateAction } from "react"
 import { AiFillCloseCircle } from 'react-icons/ai'
+import { BsPersonCircle } from "react-icons/bs"
 
 export interface Props {
   style: {
@@ -8,13 +9,14 @@ export interface Props {
     type: string
   }
   action: {
-    setClosedFromModal: Dispatch<SetStateAction<boolean>>
+    closeItself: Dispatch<SetStateAction<boolean>>
+    openAnother?: Dispatch<SetStateAction<boolean>>
   }
 }
 
 export default function MidModal({ ...props }: Props): JSX.Element {
 
-  const setModalClosed = () => props.action.setClosedFromModal(true);
+  const setModalClosed = () => props.action.closeItself(true);
 
   return (
     <div className={`fixed inset-0 z-10 ${props.style.color.primary.bg} rounded-lg lg:hidden`}>
@@ -22,22 +24,21 @@ export default function MidModal({ ...props }: Props): JSX.Element {
       <div className='flex flex-col top-0 z-20'>
         <div className="absolute top-0 left-0 m-1 items-center">
           <button className="p-1" onClick={() => setModalClosed()}>
-            <AiFillCloseCircle size={30}/>
+            <AiFillCloseCircle size={30} />
           </button>
         </div>
         <div className="flex justify-center items-center m-1 px-2">
-          {props.style.type}
+          <ModalContent style={props.style} action={props.action} />
         </div>
       </div>
     </div>
   )
 }
 
-function ModalContent ({...props}: Props) {
+function ModalContent({ ...props }: Props): JSX.Element {
   if (props.style.type === 'WhatsApp') {
     return (
-      <div>
-
+      <div className="flex flex-row">
       </div>
     )
   } else if (props.style.type === 'Cart') {
@@ -49,13 +50,29 @@ function ModalContent ({...props}: Props) {
   } else if (props.style.type === 'Profile') {
     return (
       <div>
+        <div>
+          <div className="text-lg">
+            Sua conta
+          </div>
+          <div>
+            <BsPersonCircle size={30} />
+          </div>
+        </div>
+        <div>
 
+        </div>
       </div>
     )
   } else if (props.style.type === 'Menu') {
     return (
       <div>
-        
+
+      </div>
+    )
+  } else {
+    return (
+      <div>
+
       </div>
     )
   }

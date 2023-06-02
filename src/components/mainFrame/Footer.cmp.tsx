@@ -36,7 +36,7 @@ function FooterForMobile({ ...props }: Props): JSX.Element {
       {!isModalClosed && (
         <MidModal
           style={{ color: props.color, type: lastOptionChosen }}
-          action={{ setClosedFromModal: setModalClosed }}
+          action={{ closeItself: setModalClosed }}
         />
       )}
       {/* Actual Footer being loaded cursively from @/utils/getFotterIcons.ts */}
