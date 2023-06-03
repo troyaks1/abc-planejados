@@ -5,6 +5,7 @@ declare namespace Modal {
     }
     action: {
       isOpen: boolean
+      setOpen: Dispatch<SetStateAction<boolean>>
       openAnother?: Dispatch<SetStateAction<boolean>>
     }
     content: {

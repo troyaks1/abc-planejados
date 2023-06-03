@@ -1,13 +1,8 @@
-import Color from "@/interfaces/frontend/Color"
-import { Dispatch, SetStateAction } from "react"
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { BsPersonCircle } from "react-icons/bs"
 import { useState } from 'react'
 import ModalContent from "../elements/modalContent.el"
 
 export default function MidModal({ ...props }: Modal.Props): JSX.Element {
-
-  const setModalClosed = () => props.action.isOpen = false;
 
   (props.content.type === null) ? (<></>) : null;
 
@@ -17,7 +12,7 @@ export default function MidModal({ ...props }: Modal.Props): JSX.Element {
         {/* ^^^ The div above is a ground-cover for the modal in order to disabled underneath elements. The rest below is the modal itself. */}
         <div className='flex flex-col top-0 z-20'>
           <div className="absolute top-0 left-0 m-1 items-center">
-            <button className="p-1" onClick={() => setModalClosed()}>
+            <button className="p-1" onClick={() => props.action.setOpen(false)}>
               <AiFillCloseCircle size={30} />
             </button>
           </div>
