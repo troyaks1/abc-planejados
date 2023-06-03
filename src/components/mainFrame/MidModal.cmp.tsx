@@ -1,6 +1,6 @@
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { useState } from 'react'
-import ModalContent from "../elements/modalContent.el"
+import ModalContent from "@/components/elements/ModalContent.el"
 
 export default function MidModal({ ...props }: Modal.Props): JSX.Element {
 
