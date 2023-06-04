@@ -9,9 +9,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const [loading, setLoading] = useState(false);
 
-  let timer: NodeJS.Timeout;
+  
 
   useEffect(() => { // Global effect to handle loading pages.
+
+    let timer: NodeJS.Timeout;
+
     const handleStart = (url: string) => {
       console.log(`Loading: ${url}`);
       timer = setTimeout(() => setLoading(true), 250); // Set loading animation only after 0.5 seconds to prevent flickering with fast loading pages.
