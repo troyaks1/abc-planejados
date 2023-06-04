@@ -34,7 +34,7 @@ function FooterForMobile({ ...props }: Props): JSX.Element {
     <div className='flex flex-col mb-32'>
       <MidModal style={{ color: props.color }} action={{ isOpen: isModalOpen, setOpen: setModalOpen }} content={{type: lastTypeChosen }} />
       {/* Actual Footer being loaded recursively from @/utils/getFotterIcons.ts */}
-      <div className={`${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-20 px-8 fixed flex flex-row justify-between items-center rounded-t-xl shadow-upward lg:hidden`}>
+      <div className={`${props.color.secundary.bg} ${props.color.secundary.text} ${props.color.secundary.shadow} w-full bottom-0 pt-1.5 pb-0.5 z-20 px-8 fixed flex flex-row justify-between items-center rounded-t-xl shadow-upward md:hidden`}>
         {getFooterIcons().map((icon, index) => {
           return (
             <div key={index} className={`flex flex-col items-center ${icon.cursor}`} onClick={() => handleClick(icon.type)}>

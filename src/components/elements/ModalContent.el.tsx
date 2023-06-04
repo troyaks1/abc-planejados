@@ -16,19 +16,7 @@ export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
       </div>
     )
   } else if (props.type === 'Profile') {
-    return (
-      <div className="overflow-y-auto h-screen">
-        <div className="flex flex-col justify-center items-center pt-6">
-          <div className="text-xl m-1">
-            Sua conta
-          </div>
-          <div className="m-2">
-            <BsPersonCircle size={100} />
-          </div>
-        </div>
-        <Profile {...props} />
-      </div>
-    )
+    return ( <Profile {...props} /> )
   } else if (props.type === 'WhatsApp') {
     return (
       <div className="h-screen">
@@ -55,21 +43,31 @@ function Profile({ ...props }: Modal.Content): JSX.Element {
     )
   } else {
     return (
-      <div className="flex flex-col pt-10">
-        <Button
-          text="Entrar"
-          title="Faça login"
-          color={props.color}
-          onClick={() => router.push("/login")}
-          style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
-        />
-        <Button
-          text="Registrar"
-          title="Cria sua conta"
-          color={props.color}
-          onClick={() => router.push("/register")}
-          style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
-        />
+      <div>
+        <div className="flex flex-col justify-center items-center pt-6">
+          <div className="text-xl font-bold m-1 pb-4">
+            Seu perfil está vazio!
+          </div>
+          <div className="m-2">
+            <BsPersonCircle size={100} />
+          </div>
+        </div>
+        <div className="flex flex-col pt-6">
+          <Button
+            text="Entrar"
+            title="Faça login"
+            color={props.color}
+            onClick={() => router.push("/login")}
+            style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
+          />
+          <Button
+            text="Registrar"
+            title="Cria sua conta"
+            color={props.color}
+            onClick={() => router.push("/register")}
+            style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
+          />
+        </div>
       </div>
     )
   }

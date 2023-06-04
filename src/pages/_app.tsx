@@ -9,13 +9,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  let timer: NodeJS.Timeout;
+
+  useEffect(() => { // Global effect to handle loading pages.
     const handleStart = (url: string) => {
       console.log(`Loading: ${url}`);
-      setLoading(true);
+      timer = setTimeout(() => setLoading(true), 250); // Set loading animation only after 0.5 seconds to prevent flickering with fast loading pages.
     }
     const handleComplete = (url: string) => {
       console.log(`Stop Loading: ${url}`);
+      clearTimeout(timer);
       setLoading(false);
     }
 
@@ -32,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      {loading && <Loading />} {/* Display your loading component here */}
+      {loading && <Loading />} {/* Display loading when page is being loaded. */}
       <Component {...pageProps} />
     </>
   )
