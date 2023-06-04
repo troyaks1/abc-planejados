@@ -1,6 +1,7 @@
 import { BsPersonCircle } from "react-icons/bs"
 import Button from "./Button.el"
 import { useRouter } from 'next/router'
+import { Modal } from "@/interfaces/frontend/Modal"
 
 export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
   if (props.type === 'Cart') {
@@ -16,7 +17,7 @@ export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
       </div>
     )
   } else if (props.type === 'Profile') {
-    return ( <Profile {...props} /> )
+    return ( <Profile { ...props } /> )
   } else if (props.type === 'WhatsApp') {
     return (
       <div className="h-screen">
@@ -36,7 +37,7 @@ function Profile({ ...props }: Modal.Content): JSX.Element {
 
   const router = useRouter();
 
-  if (props.action.isLogged) {
+  if (props.action.auth.isLogged) {
     return (
       <>
       </>
@@ -44,6 +45,7 @@ function Profile({ ...props }: Modal.Content): JSX.Element {
   } else {
     return (
       <div>
+        {/* Profile Header */}
         <div className="flex flex-col justify-center items-center pt-6">
           <div className="text-xl font-bold m-1 pb-4">
             Seu perfil está vazio!
@@ -52,6 +54,7 @@ function Profile({ ...props }: Modal.Content): JSX.Element {
             <BsPersonCircle size={100} />
           </div>
         </div>
+        {/* Path Buttons */}
         <div className="flex flex-col pt-6">
           <Button
             text="Entrar"

@@ -1,23 +1,20 @@
+import LoginContextI from "./LoginAuth.context"
+
 declare namespace Modal {
   export interface Props {
-    style: {
-      color: Color
-    }
     action: {
       isOpen: boolean
       setOpen: Dispatch<SetStateAction<boolean>>
       openAnother?: Dispatch<SetStateAction<boolean>>
     }
-    content: {
-      type: Modal.Content['type']
-    }
+    content: Modal.Content
   }
 
   export interface Content {
     color: Color
     type: 'WhatsApp' | 'Menu' | 'Profile' | 'Cart' | null
     action: {
-      isLogged: boolean
+      auth: LoginContextI
     }
   }
 }
