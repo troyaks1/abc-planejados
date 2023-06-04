@@ -2,6 +2,7 @@ import { BsSearch, BsPersonCircle, BsList } from "react-icons/bs";
 import SearchBar from "@/components/elements/SearchBar.el";
 import { useState } from "react";
 import Color from "@/interfaces/frontend/Color";
+import { useRouter } from "next/router";
 
 interface Props {
   color: Color
@@ -18,10 +19,13 @@ export default function Header({ ...props }: Props): JSX.Element {
 }
 
 function HeaderForComputer({ ...props }: Props): JSX.Element {
+
+  const router = useRouter()
+
   return (
     <div className={`lg:flex ${props.color.secundary.bg} ${props.color.secundary.shadow} top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md bg-opacity-90 hidden`}>
       {/* logo */}
-      <div className={`absolute mr-auto text-lg ${props.color.secundary.text} font-bold`}>
+      <div className={`absolute mr-auto text-lg ${props.color.secundary.text} font-bold cursor-pointer`} onClick={() => router.push('/')}>
         www.planejados.abc.br
       </div>
       {/* Search bar */}
@@ -49,6 +53,7 @@ function HeaderForComputer({ ...props }: Props): JSX.Element {
 function HeaderForMobile({ ...props }: Props): JSX.Element {
 
   const [search, setSearch] = useState(false);
+  const router = useRouter()
 
   const openSearchBar = () => {
     (search) ? setSearch(false) : setSearch(true);
@@ -57,7 +62,7 @@ function HeaderForMobile({ ...props }: Props): JSX.Element {
 
   const LogoForMobile = () => {
     return (
-      <div className={`flex relative left-1/2 transform -translate-x-1/2 text-md ${props.color.secundary.text} font-bold`}>
+      <div className={`flex relative left-1/2 transform -translate-x-1/2 text-md ${props.color.secundary.text} font-bold cursor-pointer`} onClick={() => router.push('/')}>
         www.planejados.abc.br
       </div>)
   }

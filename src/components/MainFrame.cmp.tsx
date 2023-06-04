@@ -14,8 +14,8 @@ export default function MainFrame(props: Props): JSX.Element {
 
   return (
     <BackGround color={color}>
+      <Header color={color} />
       <ContentSpace>
-        <Header color={color} />
         {props.children}
       </ContentSpace>
       <Footer color={color} />
@@ -39,7 +39,7 @@ function BackGround(props: BackGroundProps) {
 function ContentSpace({ ...props }: { children: ReactNode }) { // This is necessary to maintain the footer glued without overlapping any underneath component while scrolling.
   // The content below the footer gets messed up if we don't do this strangeness.
   return (
-    <div className="min-h-screen">
+    <div className="min-h-fit">
       {props.children}
     </div>
   )
