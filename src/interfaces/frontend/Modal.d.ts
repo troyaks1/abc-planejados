@@ -16,5 +16,8 @@ declare namespace Modal {
   export interface Content {
     color: Color
     type: 'WhatsApp' | 'Menu' | 'Profile' | 'Cart' | null
+    action: {
+      isLogged: boolean
+    }
   }
 }

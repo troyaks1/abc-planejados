@@ -8,16 +8,16 @@ export default function MidModal({ ...props }: Modal.Props): JSX.Element {
 
   if (props.action.isOpen) {
     return (
-      <div className={`fixed inset-0 z-10 ${props.style.color.primary.bg} rounded-lg lg:hidden`}>
+      <div className={`absolute inset-0 z-20 ${props.style.color.primary.bg} rounded-lg lg:hidden`}>
         {/* ^^^ The div above is a ground-cover for the modal in order to disabled underneath elements. The rest below is the modal itself. */}
-        <div className='flex flex-col top-0 z-20'>
+        <div className='flex flex-col top-0'>
           <div className="absolute top-0 left-0 m-1 items-center">
             <button className="p-1" onClick={() => props.action.setOpen(false)}>
               <AiFillCloseCircle size={30} />
             </button>
           </div>
           <div className="flex justify-center items-center m-1 px-2">
-            <ModalContent type={props.content.type} color={props.style.color} />
+            <ModalContent type={props.content.type} color={props.style.color} action={{isLogged: false}} />
           </div>
         </div>
       </div>

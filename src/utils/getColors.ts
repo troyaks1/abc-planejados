@@ -26,7 +26,7 @@ const colorDay = (): Color => {
     terceary: {
       bg: 'bg-slate-500',
       text: 'text-zinc-300',
-      shadow: ''
+      shadow: 'shadow-cyan-900'
     }
   }
 }

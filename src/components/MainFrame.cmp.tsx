@@ -14,8 +14,10 @@ export default function MainFrame(props: Props): JSX.Element {
 
   return (
     <BackGround color={color}>
-      <Header color={color} />
-      {props.children}
+      <ContentSpace>
+        <Header color={color} />
+        {props.children}
+      </ContentSpace>
       <Footer color={color} />
     </BackGround>
   )
@@ -29,6 +31,15 @@ interface BackGroundProps {
 function BackGround(props: BackGroundProps) {
   return (
     <div className={`flex flex-col min-h-screen w-full ${props.color.primary.bg}`}>
+      {props.children}
+    </div>
+  )
+}
+
+function ContentSpace({ ...props }: { children: ReactNode }) { // This is necessary to maintain the footer glued without overlapping any underneath component while scrolling.
+  // The content below the footer gets messed up if we don't do this strangeness.
+  return (
+    <div className="min-h-screen">
       {props.children}
     </div>
   )

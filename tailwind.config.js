@@ -12,10 +12,13 @@ module.exports = {
     }
   },
   plugins: [],
-  safelist: [
-    { pattern: /^bg-/, layers: ['utilities'] },
-    { pattern: /^text-/, layers: ['utilities'] },
-    { pattern: /^shadow-/, layers: ['utilities'] },
-    { pattern: /^cursor-/, layers: ['utilities'] },
+  safelist: [ // List for safing dinamic property generation.
+    { pattern: /^bg-/, layers: ['utilities'] }, // Danimic background color
+    { pattern: /^text-/, layers: ['utilities'] }, // Dinamic text prop
+    { pattern: /^shadow-/, layers: ['utilities'] }, // Dinamic shadow
+    { pattern: /^cursor-/, layers: ['utilities'] }, // Dinamic cursor
+    { pattern: /^h-/, layers: ['utilities'] }, // Dinamic height
+    { pattern: /^w-/, layers: ['utilities'] }, // Dinamic width
+    { pattern: /^p-/, layers: ['utilities'] }, // Dinamic padding
   ],
 }
