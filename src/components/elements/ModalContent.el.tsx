@@ -6,13 +6,13 @@ import { Modal } from "@/interfaces/frontend/Modal"
 export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
   if (props.type === 'Cart') {
     return (
-      <div className="h-screen">
+      <div className="">
         Cart
       </div>
     )
   } else if (props.type === 'Menu') {
     return (
-      <div className="h-screen">
+      <div className="">
         Menu
       </div>
     )
@@ -26,7 +26,7 @@ export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
     )
   } else {
     return (
-      <div className="h-screen">
+      <div className="">
         Error: Loading content for {props.type} is not available!
       </div>
     )
