@@ -3,21 +3,19 @@ import type { AppProps } from 'next/app'
 import { useState, useEffect } from 'react';
 import Router from 'next/router';
 import Loading from '@/components/Loading.cmp';
-import { LoginProvider } from '@/context/Login.context';
+import { LoginContextProvider } from '@/context/Login.context';
 
 function MyApp({ Component, pageProps }: AppProps) {
 
   const [loading, setLoading] = useState(false);
 
-  
-
-  useEffect(() => { // Global effect to handle loading pages.
+  useEffect(() => { // Global effect to handle loading state of a page.
 
     let timer: NodeJS.Timeout;
 
     const handleStart = (url: string) => {
       console.log(`Loading: ${url}`);
-      timer = setTimeout(() => setLoading(true), 250); // Set loading animation only after 0.5 seconds to prevent flickering with fast loading pages.
+      timer = setTimeout(() => setLoading(true), 250); // Prevent flickering on fast loading pages.
     }
     const handleComplete = (url: string) => {
       console.log(`Stop Loading: ${url}`);
@@ -39,10 +37,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <LoginProvider>
-      {loading && <Loading />} {/* Display loading when page is being loaded. */}
+    <LoginContextProvider>
+      {loading && <Loading />}
       <Component {...pageProps} />
-    </LoginProvider>
+    </LoginContextProvider>
   )
 }
 

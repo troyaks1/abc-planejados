@@ -1,17 +1,16 @@
 import { createContext, useState, useEffect, ReactNode } from 'react';
-import LoginContextI from '@/interfaces/frontend/LoginAuth.context';
+import LoginContext from '@/interfaces/frontend/LoginAuth.context';
 
-export const LoginContext = createContext<LoginContextI>({
+export const LoginContext = createContext<LoginContext>({
   isLogged: false,
   login: () => {},
   logout: () => {},
 })
 
-export function LoginProvider({ ...props }: { children: ReactNode }) {
+export function LoginContextProvider({ ...props }: { children: ReactNode }) {
   const [isLogged, setLoggedIn] = useState(false);
 
-  // On initial render, check if the user is logged in
-  useEffect(() => {
+  useEffect(() => { // On initial render, check if the user is logged in
     const token = localStorage.getItem('token');
     if (token) {
       // TODO: Verify the token, or do some extra checks.

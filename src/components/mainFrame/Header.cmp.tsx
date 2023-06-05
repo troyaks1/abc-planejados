@@ -5,6 +5,10 @@ import Color from "@/interfaces/frontend/Color";
 import { useRouter } from "next/router";
 import Button from "@/components/elements/Button.el";
 import Header from "@/interfaces/frontend/Header";
+import getOptionIcons from "@/utils/getOptionIcons";
+import { Modal } from "@/interfaces/frontend/Modal";
+import MidModal from "./MidModal.cmp";
+import OptionIcons from "../elements/OptionIcons.el";
 
 interface Props {
   color: Color
@@ -14,15 +18,23 @@ interface Props {
 export default function Header({ ...props }: Header): JSX.Element {
   return (
     <>
-      <HeaderForComputer { ...props } />
-      <HeaderForMobile { ...props } />
+      <HeaderForComputer {...props} />
+      <HeaderForMobile {...props} />
     </>
   )
 }
 
 function HeaderForComputer({ ...props }: Header): JSX.Element {
 
-  const router = useRouter()
+  const router = useRouter();
+
+  const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [lastTypeChosen, setTypeChosen] = useState<Modal.Content['type']>(null);
+
+  const handleClick = (typeChosen: Modal.Content['type']) => {
+    if (lastTypeChosen === typeChosen || !isModalOpen) { setModalOpen(!isModalOpen); }
+    setTypeChosen(typeChosen);
+  }
 
   return (
     <div className={`md:flex ${props.style.color.secundary.bg} ${props.style.color.secundary.shadow} top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md bg-opacity-90 hidden`}>
@@ -33,27 +45,9 @@ function HeaderForComputer({ ...props }: Header): JSX.Element {
       {/* Search bar */}
       <SearchBar color={props.style.color} />
       {/* Name and Login */}
-      <div className='flex items-center space-x-4'>
-        {/* login */}
-        <div className='ml-auto flex flex-row  items-center space-x-2'>
-          <BsPersonCircle size={34} className={`${props.style.color.secundary.text}`} />
-          <div className='flex flex-col text-xs text-white justify-center items-center'>
-            <Button
-              text="Entrar"
-              title="Faça login!"
-              color={props.style.color}
-              onClick={() => router.push("/login")}
-              style={{ height: 5, width: 20, text: 'sm', padding: 1 }}
-            />
-            <Button
-              text="Cadastrar"
-              title="Cria sua conta!"
-              color={props.style.color}
-              onClick={() => router.push("/register")}
-              style={{ height: 5, width: 20, text: 'sm', padding: 1 }}
-            />
-          </div>
-        </div>
+      <div className='flex ml-auto flex-row items-center'>
+        <MidModal action={{ isOpen: isModalOpen, setOpen: setModalOpen }} content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
+        <OptionIcons onClick={handleClick} />
       </div>
     </div>
   )
