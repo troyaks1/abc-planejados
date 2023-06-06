@@ -1,4 +1,4 @@
-import { BsPersonCircle } from "react-icons/bs"
+import { BsPersonCircle, BsWhatsapp } from "react-icons/bs"
 import Button from "./Button.el"
 import { useRouter } from 'next/router'
 import { Modal } from "@/interfaces/frontend/Modal.context"
@@ -17,19 +17,11 @@ export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
       </div>
     )
   } else if (props.type === 'Profile') {
-    return ( <Profile { ...props } /> )
+    return (<Profile {...props} />)
   } else if (props.type === 'WhatsApp') {
-    return (
-      <div className="h-screen">
-        WhatsApp
-      </div>
-    )
+    return (<WhatsApp {...props} />)
   } else {
-    return (
-      <div className="">
-        Error: Loading content for {props.type} is not available!
-      </div>
-    )
+    return (<div className=""> Error: Content for {props.type} is not available! </div>)
   }
 }
 
@@ -74,4 +66,40 @@ function Profile({ ...props }: Modal.Content): JSX.Element {
       </div>
     )
   }
+}
+
+function WhatsApp({ ...props }: Modal.Content): JSX.Element {
+
+  const router = useRouter();
+  return (
+    <div>
+      {/* Profile Header */}
+      <div className="flex flex-col justify-center items-center pt-6">
+        <div className="text-xl font-bold m-1 pb-4">
+          Fale conosco!
+        </div>
+        <div className="m-2">
+          <BsWhatsapp size={100} />
+        </div>
+      </div>
+      {/* Path Buttons */}
+      <div className="flex flex-col pt-6">
+        <Button
+          text="Compre pelo WhatsApp"
+          title="Canal de vendas"
+          color={props.color}
+          onClick={() => router.push("/vendasWpp")}
+          style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
+        />
+        <Button
+          text="Tire suas duvidas"
+          title="Canal de duvidas e suporte"
+          color={props.color}
+          onClick={() => router.push("/suporteWpp")}
+          style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
+        />
+      </div>
+    </div>
+  )
+
 }

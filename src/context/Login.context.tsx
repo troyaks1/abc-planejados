@@ -13,17 +13,22 @@ export function LoginContextProvider({ ...props }: { children: ReactNode }) {
   useEffect(() => { // On initial render, check if the user is logged in
     const token = localStorage.getItem('token');
     if (token) {
-      // TODO: Verify the token, or do some extra checks.
+      // TODO: Verify the token validity in DB, and do some extra checks.
       setLoggedIn(true);
     }
   }, []);
 
   const login = (token: string) => {
+    // TODO:
+    // Ask API to create token, 
+    // Fetch token on DB based on email and password. Or Fetch token based on email and Google token.
     localStorage.setItem('token', token); // Store token in localStorage
     setLoggedIn(true);
   }
 
   const logout = () => {
+    // TODO:
+    // Ask API to delete token,
     localStorage.removeItem('token'); // Remove token from localStorage
     setLoggedIn(false);
   }

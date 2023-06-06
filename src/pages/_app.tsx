@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <LoginContextProvider>
+    <LoginContextProvider> {/* Required to share the login state globally through the application */ }
       {loading && <Loading />}
       <Component {...pageProps} />
     </LoginContextProvider>

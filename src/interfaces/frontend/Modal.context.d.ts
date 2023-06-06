@@ -20,7 +20,7 @@ declare namespace Modal {
 
   export interface Context {
     isModalOpen: boolean
-    setOpen: (isOpen: boolean) => void
+    setModalOpen: (isOpen: boolean) => void
     lastTypeChosen: Modal.Content['type'] | null
     setTypeChosen: (typeChosen: Modal.Content['type'] | null) => void
     onClick: (typeChosen: Modal.Content['type']) => void

@@ -21,7 +21,7 @@ export default function Header({ ...props }: Header): JSX.Element {
 function HeaderForComputer({ ...props }: Header): JSX.Element {
 
   const router = useRouter();
-  const { setOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
+  const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
 
   return (
     <div className={`md:flex ${props.style.color.secundary.bg} ${props.style.color.secundary.shadow} top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md bg-opacity-90 hidden`}>
@@ -34,7 +34,7 @@ function HeaderForComputer({ ...props }: Header): JSX.Element {
       {/* Name and Login */}
       <div className='flex ml-auto flex-row items-center'>
         <MidModal
-          action={{ isOpen: isModalOpen, setOpen: setOpen }}
+          action={{ isOpen: isModalOpen, setOpen: setModalOpen }}
           content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
         <OptionIcons onClick={onClick} />
       </div>
