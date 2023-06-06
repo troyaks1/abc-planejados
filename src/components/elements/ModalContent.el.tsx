@@ -1,7 +1,7 @@
 import { BsPersonCircle } from "react-icons/bs"
 import Button from "./Button.el"
 import { useRouter } from 'next/router'
-import { Modal } from "@/interfaces/frontend/Modal"
+import { Modal } from "@/interfaces/frontend/Modal.context"
 
 export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
   if (props.type === 'Cart') {

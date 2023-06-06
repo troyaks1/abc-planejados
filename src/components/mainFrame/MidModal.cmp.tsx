@@ -1,8 +1,8 @@
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { useContext, useState } from 'react'
 import ModalContent from "@/components/elements/ModalContent.el"
-
-import { Modal } from '@/interfaces/frontend/Modal';
+import { Modal } from '@/interfaces/frontend/Modal.context';
+import { ModalContext } from '@/context/MidModal.context';
+import { useContext } from 'react';
 
 export default function MidModal({ ...props }: Modal.Props): JSX.Element {
 
@@ -16,20 +16,22 @@ export default function MidModal({ ...props }: Modal.Props): JSX.Element {
 
   return (
     <>
-      <MidModalForPC {...props} />
-      <MidModalForMobile {...props} />
+      <MidModalForPC { ...props } />
+      <MidModalForMobile { ...props } />
     </>
   )
 }
 
 function MidModalForPC({ ...props }: Modal.Props): JSX.Element {
 
+  const { setOpen } = useContext(ModalContext);
+
   return (
     <div className={`md:fixed inset-20 z-20 ${props.content.color.secundary.bg} rounded-lg overflow-y-auto md:block hidden`}>
       {/* ^^^ The div above is a ground-cover for the modal in order to disabled underneath elements. The rest below is the modal itself. */}
       <div className='flex flex-col'>
         <div className="absolute top-0 left-0 m-1 items-center">
-          <button className="p-1" onClick={() => props.action.setOpen(false)}>
+          <button className="p-1" onClick={() => setOpen(false)}>
             <AiFillCloseCircle size={30} />
           </button>
         </div>

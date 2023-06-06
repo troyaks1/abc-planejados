@@ -1,5 +1,5 @@
 import getOptionIcons from '@/utils/getOptionIcons';
-import { Modal } from '@/interfaces/frontend/Modal';
+import { Modal } from '@/interfaces/frontend/Modal.context';
 
 export default function OptionIcons({ ...props }: { onClick: (typeChosen: Modal.Content['type']) => void }) {
   return (

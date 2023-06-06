@@ -1,18 +1,12 @@
-import { BsSearch, BsPersonCircle, BsList } from "react-icons/bs";
+import { BsSearch  } from "react-icons/bs";
 import SearchBar from "@/components/elements/SearchBar.el";
-import { useState } from "react";
-import Color from "@/interfaces/frontend/Color";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import Button from "@/components/elements/Button.el";
 import Header from "@/interfaces/frontend/Header";
-import getOptionIcons from "@/utils/getOptionIcons";
-import { Modal } from "@/interfaces/frontend/Modal";
+import { Modal } from "@/interfaces/frontend/Modal.context";
 import MidModal from "./MidModal.cmp";
 import OptionIcons from "../elements/OptionIcons.el";
-
-interface Props {
-  color: Color
-}
+import { ModalContext } from "@/context/MidModal.context";
 
 
 export default function Header({ ...props }: Header): JSX.Element {
@@ -27,12 +21,10 @@ export default function Header({ ...props }: Header): JSX.Element {
 function HeaderForComputer({ ...props }: Header): JSX.Element {
 
   const router = useRouter();
-
-  const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [lastTypeChosen, setTypeChosen] = useState<Modal.Content['type']>(null);
+  const { setOpen, setTypeChosen, isModalOpen, lastTypeChosen } = useContext(ModalContext);
 
   const handleClick = (typeChosen: Modal.Content['type']) => {
-    if (lastTypeChosen === typeChosen || !isModalOpen) { setModalOpen(!isModalOpen); }
+    if (lastTypeChosen === typeChosen || !isModalOpen) { setOpen(!isModalOpen); }
     setTypeChosen(typeChosen);
   }
 
@@ -46,7 +38,7 @@ function HeaderForComputer({ ...props }: Header): JSX.Element {
       <SearchBar color={props.style.color} />
       {/* Name and Login */}
       <div className='flex ml-auto flex-row items-center'>
-        <MidModal action={{ isOpen: isModalOpen, setOpen: setModalOpen }} content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
+        <MidModal action={{ isOpen: isModalOpen, setOpen: setOpen }} content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
         <OptionIcons onClick={handleClick} />
       </div>
     </div>

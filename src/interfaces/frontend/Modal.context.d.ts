@@ -17,4 +17,12 @@ declare namespace Modal {
       auth: LoginContextI
     }
   }
+
+  export interface Context {
+    isModalOpen: boolean
+    setOpen: (isOpen: boolean) => void
+    lastTypeChosen: Modal.Content['type'] | null
+    setTypeChosen: (typeChosen: Modal.Content['type'] | null) => void
+  }
 }
+
