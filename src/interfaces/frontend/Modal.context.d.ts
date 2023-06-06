@@ -23,6 +23,7 @@ declare namespace Modal {
     setOpen: (isOpen: boolean) => void
     lastTypeChosen: Modal.Content['type'] | null
     setTypeChosen: (typeChosen: Modal.Content['type'] | null) => void
+    onClick: (typeChosen: Modal.Content['type']) => void
   }
 }
 

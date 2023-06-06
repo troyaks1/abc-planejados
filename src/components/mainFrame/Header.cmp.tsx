@@ -1,4 +1,4 @@
-import { BsSearch  } from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 import SearchBar from "@/components/elements/SearchBar.el";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
@@ -21,12 +21,7 @@ export default function Header({ ...props }: Header): JSX.Element {
 function HeaderForComputer({ ...props }: Header): JSX.Element {
 
   const router = useRouter();
-  const { setOpen, setTypeChosen, isModalOpen, lastTypeChosen } = useContext(ModalContext);
-
-  const handleClick = (typeChosen: Modal.Content['type']) => {
-    if (lastTypeChosen === typeChosen || !isModalOpen) { setOpen(!isModalOpen); }
-    setTypeChosen(typeChosen);
-  }
+  const { setOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
 
   return (
     <div className={`md:flex ${props.style.color.secundary.bg} ${props.style.color.secundary.shadow} top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md bg-opacity-90 hidden`}>
@@ -38,8 +33,10 @@ function HeaderForComputer({ ...props }: Header): JSX.Element {
       <SearchBar color={props.style.color} />
       {/* Name and Login */}
       <div className='flex ml-auto flex-row items-center'>
-        <MidModal action={{ isOpen: isModalOpen, setOpen: setOpen }} content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
-        <OptionIcons onClick={handleClick} />
+        <MidModal
+          action={{ isOpen: isModalOpen, setOpen: setOpen }}
+          content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
+        <OptionIcons onClick={onClick} />
       </div>
     </div>
   )
@@ -64,11 +61,8 @@ function HeaderForMobile({ ...props }: Header): JSX.Element {
 
   return (
     <div className={`md:hidden ${props.style.color.secundary.bg} ${props.style.color.secundary.shadow} flex top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-xl bg-opacity-90 shadow-md`}>
-      {/* logo or search bar */}
-      {!search && (<LogoForMobile />)}
-      {search && (<SearchBar color={props.style.color} />)}
+      {!search && (<LogoForMobile />)} {search && (<SearchBar color={props.style.color} />)}
       <BsSearch className={`${props.style.color.secundary.text} absolute left-8`} size={20} onClick={(e) => openSearchBar()} />
-      { /* <BsList className={`${props.style.color.secundary.text} absolute right-8 cursor-pointer`} size={25} /> */}
     </div>
   )
 }
