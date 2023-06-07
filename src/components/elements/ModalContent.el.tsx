@@ -2,16 +2,15 @@ import { BsPersonCircle, BsWhatsapp } from "react-icons/bs"
 import Button from "./Button.el"
 import { useRouter } from 'next/router'
 import { Modal } from "@/interfaces/frontend/Modal.context"
+import { LuShoppingCart } from "react-icons/lu"
 
 export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
   if (props.type === 'Cart') {
-    return (
-      <div className="">
-        Cart
-      </div>
+    return ( // TODO: Implement cart only after having the product object finished to be passed into the cart props.
+      <Cart {...props} />
     )
   } else if (props.type === 'Menu') {
-    return (
+    return ( // TODO: Implement menu only after having product section structures finished and ready to be retrieved.
       <div className="">
         Menu
       </div>
@@ -70,6 +69,20 @@ function Profile({ ...props }: Modal.Content): JSX.Element {
 
 function WhatsApp({ ...props }: Modal.Content): JSX.Element {
 
+  const salesByWhatsApp = () => {
+    const phoneNum = '5511977747309'
+    const message = encodeURIComponent('Olá, gostaria de saber sobre como comprar um produto com vocês! Poderia me ajudar?');
+    const url = `https://wa.me/${phoneNum}?text=${message}`;
+    window.open(url, '_blank');
+  }
+
+  const supportByWhatsApp = () => {
+    const phoneNum = '5511977747309'
+    const message = encodeURIComponent('Olá, estou com dúvidas sobre um produto. Poderia me ajudar?');
+    const url = `https://wa.me/${phoneNum}?text=${message}`;
+    window.open(url, '_blank');
+  }
+
   const router = useRouter();
   return (
     <div>
@@ -88,18 +101,34 @@ function WhatsApp({ ...props }: Modal.Content): JSX.Element {
           text="Compre pelo WhatsApp"
           title="Canal de vendas"
           color={props.color}
-          onClick={() => router.push("/vendasWpp")}
+          onClick={() => salesByWhatsApp()}
           style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
         />
         <Button
           text="Tire suas duvidas"
           title="Canal de duvidas e suporte"
           color={props.color}
-          onClick={() => router.push("/suporteWpp")}
+          onClick={() => supportByWhatsApp()}
           style={{ height: 12, width: 'screen', text: 'xl', padding: 6 }}
         />
       </div>
     </div>
   )
 
+}
+
+function Cart({ ...props }: Modal.Content): JSX.Element {
+  return (
+    <div>
+      {/* Profile Header */}
+      <div className="flex flex-col justify-center items-center pt-6">
+        <div className="text-xl font-bold m-1 pb-4">
+          Seu carrinho de compras está vazio!
+        </div>
+        <div className="m-2">
+          <LuShoppingCart size={100} />
+        </div>
+      </div>
+    </div>
+  )
 }

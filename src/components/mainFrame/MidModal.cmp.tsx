@@ -21,7 +21,7 @@ export default function MidModal({ ...props }: Modal.Props): JSX.Element {
 function MidModalForPC({ ...props }: Modal.Props): JSX.Element {
 
   return (
-    <div className={`md:fixed inset-20 z-20 ${props.content.color.secundary.bg} rounded-lg overflow-y-auto md:block hidden`}>
+    <div className={`md:absolute w-1/3 mx-auto inset-16 z-20 ${props.content.color.secundary.bg} rounded-lg overflow-y-auto md:block hidden`}>
       {/* ^^^ The div above is a ground-cover for the modal in order to disabled underneath elements. The rest below is the modal itself. */}
       <div className='flex flex-col'>
         <div className="absolute top-0 left-0 m-1 items-center">

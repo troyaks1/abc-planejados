@@ -31,12 +31,11 @@ function HeaderForComputer({ ...props }: Header): JSX.Element {
       </div>
       {/* Search bar */}
       <SearchBar color={props.style.color} />
-      {/* Name and Login */}
-      <div className='flex ml-auto flex-row items-center'>
-        <MidModal
-          action={{ isOpen: isModalOpen, setOpen: setModalOpen }}
-          content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
-        <OptionIcons onClick={onClick} />
+      <MidModal
+        action={{ isOpen: isModalOpen, setOpen: setModalOpen }}
+        content={{ type: lastTypeChosen, color: props.style.color, action: props.action }} />
+      <div className="grid grid-flow-col auto-cols-max gap-x-6">
+        <OptionIcons onClick={onClick} surpressName={true} />
       </div>
     </div>
   )
