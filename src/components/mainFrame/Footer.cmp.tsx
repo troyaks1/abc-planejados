@@ -1,8 +1,6 @@
 import MidModal from '@/components/mainFrame/MidModal.cmp';
-// import { ModalContext } from '@/context/MidModal.context';
 import OptionIcons from '../elements/OptionIcons.el';
 import Footer from '@/interfaces/frontend/Footer';
-import { useContext } from 'react';
 import { ModalContext } from '@/context/MidModal.store';
 import { useSnapshot } from 'valtio';
 
