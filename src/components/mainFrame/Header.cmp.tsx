@@ -6,8 +6,9 @@ import Header from "@/interfaces/frontend/Header";
 import { Modal } from "@/interfaces/frontend/Modal.context";
 import MidModal from "./MidModal.cmp";
 import OptionIcons from "../elements/OptionIcons.el";
-import { ModalContext } from "@/context/MidModal.context";
-
+// import { ModalContext } from "@/context/MidModal.context";
+import { useSnapshot } from 'valtio';
+import { ModalContext } from "@/context/MidModal.store";
 
 export default function Header({ ...props }: Header): JSX.Element {
   return (
@@ -21,7 +22,8 @@ export default function Header({ ...props }: Header): JSX.Element {
 function HeaderForComputer({ ...props }: Header): JSX.Element {
 
   const router = useRouter();
-  const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
+  // const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
+  const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useSnapshot(ModalContext)
 
   return (
     <div className={`md:flex ${props.style.color.secundary.bg} ${props.style.color.secundary.shadow} top-0 z-10 px-16 py-3 sticky box-border w-full justify-between items-center rounded-b-full shadow-md bg-opacity-90 hidden`}>

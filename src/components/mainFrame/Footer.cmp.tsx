@@ -1,8 +1,10 @@
 import MidModal from '@/components/mainFrame/MidModal.cmp';
-import { ModalContext } from '@/context/MidModal.context';
+// import { ModalContext } from '@/context/MidModal.context';
 import OptionIcons from '../elements/OptionIcons.el';
 import Footer from '@/interfaces/frontend/Footer';
 import { useContext } from 'react';
+import { ModalContext } from '@/context/MidModal.store';
+import { useSnapshot } from 'valtio';
 
 export default function Footer({ ...props }: Footer): JSX.Element {
 
@@ -16,8 +18,9 @@ export default function Footer({ ...props }: Footer): JSX.Element {
 
 function FooterForMobile({ ...props }: Footer): JSX.Element {
 
-  const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
-
+  // const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useContext(ModalContext);
+  const { setModalOpen, isModalOpen, lastTypeChosen, onClick } = useSnapshot(ModalContext);
+  
   return (
     <div className='flex flex-col mb-32'>
       <MidModal

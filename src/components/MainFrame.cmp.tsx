@@ -4,7 +4,6 @@ import Footer from '@/components/mainFrame/Footer.cmp';
 import Color from '@/interfaces/frontend/Color';
 import getColors from "@/utils/getColors";
 import { LoginContext } from '@/context/Login.context';
-import { ModalContextProvider } from "@/context/MidModal.context";
 
 interface Props {
   children: ReactNode
@@ -16,11 +15,9 @@ export default function MainFrame({ ...props }: Props): JSX.Element {
   const auth = useContext(LoginContext);
   return (
     <BackGround color={color}>
-      <ModalContextProvider> {/* Required to share MidModal state globally in between Header and Footer without having to lift the state up */}
-        <Header style={{ color: color }} action={{ auth: auth }} />
-        {props.children}
-        <Footer style={{ color: color }} action={{ auth: auth }} />
-      </ModalContextProvider>
+      <Header style={{ color: color }} action={{ auth: auth }} />
+      {props.children}
+      <Footer style={{ color: color }} action={{ auth: auth }} />
     </BackGround>
   )
 }
