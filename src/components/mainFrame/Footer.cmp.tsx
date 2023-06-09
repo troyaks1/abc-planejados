@@ -1,10 +1,8 @@
-import { Modal } from '@/interfaces/frontend/Modal.context';
-import { useContext } from 'react'
-import Color from '@/interfaces/frontend/Color';
 import MidModal from '@/components/mainFrame/MidModal.cmp';
 import { ModalContext } from '@/context/MidModal.context';
-import Footer from '@/interfaces/frontend/Footer';
 import OptionIcons from '../elements/OptionIcons.el';
+import Footer from '@/interfaces/frontend/Footer';
+import { useContext } from 'react';
 
 export default function Footer({ ...props }: Footer): JSX.Element {
 

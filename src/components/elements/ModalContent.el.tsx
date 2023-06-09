@@ -6,19 +6,13 @@ import { LuShoppingCart } from "react-icons/lu"
 
 export default function ModalContent({ ...props }: Modal.Content): JSX.Element {
   if (props.type === 'Cart') {
-    return ( // TODO: Implement cart only after having the product object finished to be passed into the cart props.
-      <Cart {...props} />
-    )
+    return (<Cart {...props} />); // TODO: Implement cart only after having the product object finished to be passed into the cart props.
   } else if (props.type === 'Menu') {
-    return ( // TODO: Implement menu only after having product section structures finished and ready to be retrieved.
-      <div className="">
-        Menu
-      </div>
-    )
+    return (<div className=""> Menu </div>);  // TODO: Implement menu only after having product section structures finished and ready to be retrieved.
   } else if (props.type === 'Profile') {
-    return (<Profile {...props} />)
+    return (<Profile {...props} />);
   } else if (props.type === 'WhatsApp') {
-    return (<WhatsApp {...props} />)
+    return (<WhatsApp {...props} />);
   } else {
     return (<div className=""> Error: Content for {props.type} is not available! </div>)
   }
